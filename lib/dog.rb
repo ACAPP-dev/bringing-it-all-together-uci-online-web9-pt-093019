@@ -44,7 +44,7 @@ class Dog
     #binding.pry
     row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
     if !row.empty?
-      update(row[0])
+      self.update(row[0])
     else
       self.create(:name => name, :breed => breed)
     end
