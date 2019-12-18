@@ -57,4 +57,8 @@ class Dog
     DB[:conn].execute(sql, row[1], row[2], row[0])
     self.find_by_id(row[0])
   end
+
+  def self.find_by_name(name)
+
+  end
 end
