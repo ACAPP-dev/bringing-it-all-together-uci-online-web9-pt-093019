@@ -52,11 +52,11 @@ class Dog
     end
   end
 
-  def update(row)
+  def update(dog)
     sql = <<-SQL
       UPDATE dogs SET name = ?, breed = ? WHERE id = ?
     SQL
-    DB[:conn].execute(sql, row[1], row[2], row[0])
+    DB[:conn].execute(sql, dog.name, dog.breed, dog.id)
     self.find_by_id(row[0])
   end
 
