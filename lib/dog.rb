@@ -31,7 +31,6 @@ class Dog
   end
 
   def self.new_from_db(row)
-    #binding.pry
     dog = Dog.new(id: row[0], name: row[1], breed: row[2])
   end
 
@@ -41,13 +40,10 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-    #binding.pry
     row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
     if !row.empty?
       dog = self.new_from_db(row[0])
-      #binding.pry
       dog.update
-      #binding.pry
     else
       self.create(:name => name, :breed => breed)
     end
@@ -57,7 +53,6 @@ class Dog
     sql = <<-SQL
       UPDATE dogs SET name = ?, breed = ? WHERE id = ?
     SQL
-
     DB[:conn].execute(sql, self.name, self.breed, self.id)
     self
   end
