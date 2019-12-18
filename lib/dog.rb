@@ -57,7 +57,7 @@ class Dog
       UPDATE dogs SET name = ?, breed = ? WHERE id = ?
     SQL
     DB[:conn].execute(sql, dog.name, dog.breed, dog.id)
-    self.find_by_id(row[0])
+    self.find_by_id(dog.id)
   end
 
   def self.find_by_name(name)
