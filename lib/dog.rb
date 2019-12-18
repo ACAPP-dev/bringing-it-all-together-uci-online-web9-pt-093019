@@ -55,6 +55,7 @@ class Dog
     sql = <<-SQL
       UPDATE dogs SET name = ?, breed = ? WHERE id = ?
     SQL
+    binding.pry
     DB[:conn].execute(sql, dog.name, dog.breed, dog.id)
     self.find_by_id(dog.id)
   end
