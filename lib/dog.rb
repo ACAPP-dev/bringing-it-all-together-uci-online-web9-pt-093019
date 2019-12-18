@@ -46,7 +46,7 @@ class Dog
     if !row.empty?
       dog = self.new_from_db(row)
       binding.pry
-      row.update(row[0])
+      dog.update(row[0])
     else
       self.create(:name => name, :breed => breed)
     end
